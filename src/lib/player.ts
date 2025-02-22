@@ -1,7 +1,7 @@
-import players from "@/data/nba-players-sleeper.json";
-import { SleeperPlayers } from "@/interfaces/sleeper";
+// import players from "@/data/nba-players-sleeper.json";
+// import { SleeperPlayers } from "@/interfaces/sleeper";
 
-const playerMap: SleeperPlayers = players;
+// const playerMap: SleeperPlayers = players;
 
 export async function getPlayer(params: {
   [key: string]: string | string[] | undefined;
@@ -18,13 +18,13 @@ export async function getPlayer(params: {
     .replace(/\s/g, "");
 
   // find player from players object
-  const player = Object.values(playerMap).find(
-    (value) => value.search_full_name === playerNameSearch,
-  );
+  //   const player = Object.values(playerMap).find(
+  //     (value) => value.search_full_name === playerNameSearch,
+  //   );
 
-  if (!player) {
-    return null;
-  }
+  //   if (!player) {
+  //     return null;
+  //   }
 
-  return player;
+  return playerNameSearch;
 }
