@@ -4,16 +4,20 @@ export async function getUser(params: {
   [key: string]: string | string[] | undefined;
 }) {
   try {
-    const { username } = params;
+    const { username, userId } = params;
 
-    if (!username) {
+    const id = userId || username;
+
+    if (!id) {
       return null;
     }
 
+    console.log(`Fetching user ${id}`);
+
     // fetch user
-    const res = await fetch(
-      `${process.env.SLEEPER_BASE_URL}/v1/user/${username}`,
-    );
+    const res = await fetch(`${process.env.SLEEPER_BASE_URL}/v1/user/${id}`, {
+      cache: "force-cache",
+    });
 
     if (!res.ok) {
       throw new Error(
@@ -36,6 +40,8 @@ export async function getUser(params: {
 
 export async function getUserLeagues(userId: string) {
   try {
+    console.log(`Fetching leagues for user ${userId}`);
+
     // fetch user leagues
     const res = await fetch(
       `${process.env.SLEEPER_BASE_URL}/v1/user/${userId}/leagues/nba/2024`,
