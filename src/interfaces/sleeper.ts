@@ -35,3 +35,111 @@ export interface SleeperPlayer {
   yahoo_id: string | null;
   full_name?: string;
 }
+
+export interface User {
+  username: string;
+  user_id: string;
+  display_name: string;
+  avatar: string;
+}
+
+export interface League {
+  last_message_time: number;
+  season_type: string;
+  last_message_text_map: string | null;
+  last_author_avatar: string | null;
+  metadata: {
+    auto_continue: string;
+    keeper_deadline: string;
+    latest_league_winner_roster_id: string;
+  };
+  display_order: number;
+  shard: number;
+  season: string;
+  league_id: string;
+  sport: string;
+  loser_bracket_overrides_id: string | null;
+  scoring_settings: {
+    ast: number;
+    blk: number;
+    bonus_pt_40p: number;
+    bonus_pt_50p: number;
+    dd: number;
+    ff: number;
+    pts: number;
+    reb: number;
+    stl: number;
+    td: number;
+    tf: number;
+    to: number;
+    tpm: number;
+  };
+  roster_positions: string[];
+  last_message_id: string;
+  status: string;
+  loser_bracket_id: string | null;
+  name: string;
+  group_id: string | null;
+  last_read_id: string;
+  company_id: string | null;
+  settings: {
+    reserve_allow_dtd: number;
+    last_report: number;
+    waiver_budget: number;
+    disable_adds: number;
+    capacity_override: number;
+    taxi_deadline: number;
+    draft_rounds: number;
+    reserve_allow_na: number;
+    start_week: number;
+    playoff_seed_type: number;
+    playoff_teams: number;
+    num_teams: number;
+    daily_waivers_hour: number;
+    playoff_type: number;
+    taxi_slots: number;
+    last_scored_leg: number;
+    daily_waivers_days: number;
+    playoff_week_start: number;
+    waiver_clear_days: number;
+    waiver_after_game_start: number;
+    reserve_allow_doubtful: number;
+    commissioner_direct_invite: number;
+    reserve_allow_dnr: number;
+    taxi_allow_vets: number;
+    waiver_day_of_week: number;
+    playoff_round_type: number;
+    reserve_allow_out: number;
+    reserve_allow_sus: number;
+    trade_deadline: number;
+    taxi_years: number;
+    daily_waivers: number;
+    game_mode: number;
+    pick_trading: number;
+    type: number;
+    max_keepers: number;
+    waiver_type: number;
+    league_average_match: number;
+    trade_review_days: number;
+    bench_lock: number;
+    offseason_adds: number;
+    leg: number;
+    reserve_slots: number;
+    reserve_allow_cov: number;
+    daily_waivers_last_ran: number;
+  };
+  bracket_overrides_id: string | null;
+  last_author_is_bot: boolean;
+  bracket_id: string | null;
+  last_message_attachment: string | null;
+  avatar: string;
+  draft_id: string;
+  last_author_id: string;
+  previous_league_id: string;
+  last_pinned_message_id: string | null;
+  last_author_display_name: string;
+  last_transaction_id: number;
+  total_rosters: number;
+}
+
+export type Leagues = League[];

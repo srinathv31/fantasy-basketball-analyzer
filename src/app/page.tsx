@@ -1,4 +1,4 @@
-import PlayerForm from "@/components/home/PlayerForm";
+import PlayerForm from "@/components/home/UserForm";
 import Image from "next/image";
 
 export default function Home() {
