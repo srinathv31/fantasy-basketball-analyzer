@@ -4,12 +4,14 @@ import sql from "./sql";
 export async function getPlayers(playerIds: string[]) {
   try {
     const query = `
-  SELECT player_id, data
-  FROM sleeper_players
-  WHERE player_id = ANY($1::text[])
-`;
+      SELECT data
+      FROM sleeper_players
+      WHERE player_id = ANY($1::text[])
+    `;
 
-    const players = await sql(query, [playerIds]);
+    const players = (await sql(query, [playerIds])) as {
+      data: SleeperPlayer;
+    }[];
 
     return { players };
   } catch (error) {

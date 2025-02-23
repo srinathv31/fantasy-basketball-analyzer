@@ -1,5 +1,6 @@
 import { getLeagueRosters } from "@/lib/league";
 import RosterView from "./RosterView";
+import { Suspense } from "react";
 
 export default async function RosterList({
   leagueId,
@@ -18,17 +19,25 @@ export default async function RosterList({
   const otherRosters = rosters.filter((roster) => roster.owner_id !== userId);
 
   return (
-    <div className="p-4 space-y-4">
-      <p>Your roster:</p>
-      <RosterView roster={userRoster[0]} />
-      <p>Laegue rosters:</p>
-      <ul>
-        {otherRosters.map((roster) => (
-          <li key={roster.roster_id}>
-            <RosterView roster={roster} />
-          </li>
-        ))}
-      </ul>
+    <div className="flex flex-row space-x-4">
+      <div className="flex flex-col w-1/2">
+        <p>Your roster:</p>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RosterView roster={userRoster[0]} />
+        </Suspense>
+      </div>
+      <div className="flex flex-col w-1/2 h-screen overflow-y-scroll">
+        <p>League rosters:</p>
+        <ul>
+          {otherRosters.map((roster) => (
+            <li key={roster.roster_id}>
+              <Suspense fallback={<div>Loading...</div>}>
+                <RosterView roster={roster} />
+              </Suspense>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

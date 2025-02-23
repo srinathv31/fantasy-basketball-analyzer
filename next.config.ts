@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
         pathname: "/avatars/thumbs/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "sleepercdn.com",
+        port: "",
+        pathname: "/content/nba/players/thumb/**",
+        search: "",
+      },
     ],
   },
 };
